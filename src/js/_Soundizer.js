@@ -1,98 +1,26 @@
 import PubSub from 'pubsub-js';
-import  {getArrayWithLimitedLength} from './lib/helpers';
+import WebAudioAPISoundManager from './_SoundManager';
 
-
-
-class WebAudioAPISoundManager {
-
-  constructor() {
-
-    this._checkForSupport();
-    this.context = context;
-    this.bufferList = {};
-    this.playingSounds = {};
-
-    try {
-      window.AudioContext = window.AudioContext || window.webkitAudioContext;
-      window.audioContext = new window.AudioContext();
-    } catch (e) {
-      console.log('No Web Audio API support');
-    }
-
-
-  }
-
-  _addSound() {
-
-    // Load buffer asynchronously
-    let request = new XMLHttpRequest();
-    request.open('GET', url, true);
-    request.responseType = 'arraybuffer';
-
-    let self = this;
-
-    request.onload = function() {
-
-      // Asynchronously decode the
-      // audio file data in request.response
-      self.context.decodeAudioData(
-        request.response,
-
-        function(buffer) {
-          if (!buffer) {
-            console.log('error decoding file data: ' + url);
-            return;
-          }
-          self.bufferList[url] = buffer;
-        });
-    };
-
-    request.onerror = function() {
-      console.log('BufferLoader: XHR error');
-    };
-
-    request.send();
-  }
-
-  _stopSoundWithUrl() {
-
-    if(this.playingSounds.hasOwnProperty(url)) {
-      for (let i in this.playingSounds[url]) {
-        if (this.playingSounds[url].hasOwnProperty(i)) {
-          this.playingSounds[url][i].stop();
-        }
-      }
-    }
-
-  }
-
-
-
-
-}
-
-
-class WebAudioAPISound {
-
-  constructor() {
-
+export default class WebAudioAPISound {
+  constructor(url) {
     this.url = url + '.mp3';
-    window.webAudioAPISoundManager = window.webAudioAPISoundManager || new WebAudioAPISoundManager(window.audioContext);
+    window.webAudioAPISoundManager =
+      window.webAudioAPISoundManager || new WebAudioAPISoundManager(this.url);
     this.manager = window.webAudioAPISoundManager;
-    this.manager.addSound(this.url);
-
+    this.manager._addSound(this.url);
   }
 
-  _play(options) {
+  play(options) {
+    let url = this.url;
 
-    var buffer = this.manager.bufferList[this.url];
-
+    let buffer = this.manager.bufferList[url];
+    // console.log(buffer);
     this.settings = {
       loop: true,
-      volume: 0.1
+      volume: 0.5
     };
 
-    for(var i in options) {
+    for (var i in options) {
       if (options.hasOwnProperty(i)) {
         this.settings[i] = options[i];
       }
@@ -111,60 +39,55 @@ class WebAudioAPISound {
     }
   }
 
-  _stop() {
+  stop() {
     this.manager.stopSoundWithUrl(this.url);
   }
 
-  _makeSource(buffer) {
-  // console.log(this);
+  makeSource(buffer) {
+    // console.log(this);
     let source = this.manager.context.createBufferSource();
     let gainNode = this.manager.context.createGain();
-    let analyser = this.analyser(this);
+    let analyser = this.analyser(buffer);
     gainNode.gain.value = this.settings.volume;
+    this.GainNode = this.manager.context.GainNode;
     source.buffer = buffer;
     source.connect(analyser);
     analyser.connect(gainNode);
     gainNode.connect(this.manager.context.destination);
+    // console.log(gainNode.gain.value);
     return source;
   }
 
-  _changeVolume(element) {
+  changeVolume(element) {
     // console.log(element);
-    let volume = element.value;
+    // let val = element.value;
     let fraction = parseInt(element.value) / parseInt(element.max);
     // Let's use an x*x curve (x-squared) since simple linear (x) does not
     // sound as good.
-    this.gainNode.gain.value = fraction * fraction;
+    this.manager.context.GainNode = fraction * fraction;
+
+    // console.log(this.manager.context.GainNode);
   }
 
-  _analyser(buffer) {
-
-
+  analyser(buffer) {
     let analyser = this.manager.context.createAnalyser();
-
-    // console.log(analyser);
 
     analyser.fftSize = 256;
 
     let bufferLength = analyser.frequencyBinCount;
-    // console.log(bufferLength);
-    let frequencyData = new Uint8Array(bufferLength);
 
+    let frequencyData = new Uint8Array(bufferLength);
 
     analyser.getByteTimeDomainData(frequencyData);
 
+    // analyser.getByteFrequencyData(frequencyData);
+
+    // console.log(frequencyData);
+    // analyser.getByteFrequencyData(frequencyData)
+    const topic = 'sound';
+
+    PubSub.publish(topic, { data_fr: frequencyData, operator: analyser });
 
     return analyser;
-
-
-
   }
-
-
-
 }
-
-
-
-
-
