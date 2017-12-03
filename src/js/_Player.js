@@ -1,7 +1,7 @@
 import PubSub from 'pubsub-js';
 // import WebAudioAPISoundManager from './_Soundizer';
 import WebAudioAPISound from './_Soundizer';
-import Visualiser from './_Visualizer';
+
 import { PLAY, STOP, REGULATE } from './_constants';
 
 export default class Player {
@@ -15,7 +15,6 @@ export default class Player {
     // console.log(bach);
 
     this._bindEvents();
-    this._visualize();
   }
 
   _bindEvents() {
@@ -43,10 +42,5 @@ export default class Player {
     //   this.playing ? this.stop() : this.play();
     //   this.playing = !this.playing;
     // };
-  }
-
-  _visualize() {
-    let visual = new Visualiser();
-    visual.init();
   }
 }
