@@ -95,7 +95,7 @@ export default class WebAudioAPISound {
       // console.log(data);
       time++;
       let canvasCtx = self._canvasCtx;
-      let clock = 1;
+      let clock = -1;
 
       canvasCtx.clearRect(0, 0, self._WIDTH, self._WIDTH);
 
@@ -111,11 +111,11 @@ export default class WebAudioAPISound {
           let x =
             300 +
             (100 + f) *
-              Math.sin(f * 10 * 2 * Math.PI / micro.length * time / 1000);
+              Math.sin(f * 10 * 2 * Math.PI / 100 * (clock * time / 100));
           let y =
             300 +
             (100 + f) *
-              Math.cos(f * 10 * 2 * Math.PI / micro.length * time / 1000);
+              Math.cos(f * 10 * 2 * Math.PI / 100 * (clock * time / 100));
 
           canvasCtx.lineTo(x, y);
         });
