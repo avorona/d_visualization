@@ -82,18 +82,20 @@ export default class WebAudioAPISound {
     this._createCanvas();
 
     draw();
-
+    let time = 1;
     function draw() {
       window.requestAnimationFrame(draw);
-      analyser.getByteFrequencyData(dataArray);
+
+      analyser.getByteTimeDomainData(dataArray);
+      // analyser.getByteFrequencyData(dataArray);
       render(dataArray);
-      // analyser.getByteTimeDomainData(data);
     }
 
     function render(data) {
-      console.log(data);
-
+      // console.log(data);
+      time++;
       let canvasCtx = self._canvasCtx;
+      let clock = 1;
 
       canvasCtx.clearRect(0, 0, self._WIDTH, self._WIDTH);
 
@@ -102,28 +104,28 @@ export default class WebAudioAPISound {
 
       states.push(data.slice(0));
 
-      states.forEach((e, i) => {
+      states.forEach((e, i, macro) => {
         canvasCtx.beginPath();
-        e.forEach((f, index, array) => {
-          // console.log(f, index, array.length);
+        e.forEach((f, ii, micro) => {
+          // console.log(f);
           let x =
             300 +
-            (200 + f / 10 + 2 * Math.sin(f / 116.1)) *
-              Math.sin(f * 100 * 2 * Math.PI / array.length);
+            (100 + f) *
+              Math.sin(f * 10 * 2 * Math.PI / micro.length * time / 1000);
           let y =
             300 +
-            (200 + f / 10 + 2 * Math.sin(f / 116.1)) *
-              Math.cos(f * 100 * 2 * Math.PI / array.length);
+            (100 + f) *
+              Math.cos(f * 10 * 2 * Math.PI / micro.length * time / 1000);
 
           canvasCtx.lineTo(x, y);
         });
         canvasCtx.stroke();
       });
 
-      // canvasCtx.closePath();
+      canvasCtx.closePath();
 
-      canvasCtx.strokeStyle = 'red';
-      canvasCtx.stroke();
+      canvasCtx.strokeStyle = '#aaf411';
+      // canvasCtx.stroke();
     }
 
     return analyser;

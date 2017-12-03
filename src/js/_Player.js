@@ -26,7 +26,7 @@ export default class Player {
     let self = this;
 
     PLAY.addEventListener('click', function() {
-      self.sound.play({ volume: 0.1 });
+      self.sound.play({ loop: true, volume: 0 });
     });
 
     STOP.addEventListener('click', function() {
