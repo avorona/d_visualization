@@ -1,16 +1,68 @@
-<canvas id="canvas" width="800" height="800"></canvas>
-<!-- END BLOCK hero-wrapper -->
-<!-- BEGIN BLOCK audioCtx -->
-<div class="audioCtx">
-  <!-- begin controller -->
-  <div class='controller'>
+
+
+<!-- begin dv-audio -->
+<div class='dv-audio'>
+
+<!-- begin dv-audio__visual -->
+<div class='dv-audio__visual'>
+<!-- begin canvas-wrapper -->
+<div class='canvas-wrapper'>
+<canvas id="canvas" ></canvas>
+
+ <div class='controller'>
    <button class="button button-cta js-play-audio">Play me</button>
   <button class="button button-cta js-stop-audio">Stop me</button>
+  {#
+  <inputs class="js-regulate-audio" type="range" step="1" min="0" max="100" value="100"> #}
 
   </div>
   <!-- end controller -->
-
-  {#
-  <inputs class="js-regulate-audio" type="range" step="1" min="0" max="100" value="100"> #}
 </div>
-<!-- END BLOCK audioCtx -->
+<!-- end canvas-wrapper -->
+
+</div>
+<!-- end dv-audio__visual -->
+
+<!-- begin dv-audio__text -->
+<div class='dv-audio__text'>
+
+<!-- begin changelog -->
+<div class='changelog'>
+
+<header class="changelog__header">
+ <h4 class="changelog__heading">// Wallbreaking news</h4> 
+</header>
+
+
+<!-- begin changelog__inner -->
+<div class='changelog__inner'>
+
+<!-- begin post -->
+<div class='post'>
+
+<h4 class="post__heading">Безумный бах в канвасе</h4>
+<!-- begin post__text -->
+<div class='post__text'>
+
+{% include "posts/post1.html"%}
+
+</div>
+<!-- end post__text -->
+</div>
+<!-- end post -->
+
+
+
+</div>
+<!-- end changelog__inner -->
+</div>
+<!-- end changelog -->
+
+
+
+</div>
+<!-- end dv-audio__text -->
+
+</div>
+<!-- end dv-audio -->
+

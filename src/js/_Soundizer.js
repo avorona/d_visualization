@@ -1,6 +1,8 @@
 import PubSub from 'pubsub-js';
 import WebAudioAPISoundManager from './_SoundManager';
-import { getArrayWithLimitedLength } from './lib/helpers';
+import {
+  getArrayWithLimitedLength
+} from './lib/helpers';
 // import Visualiser from './_Visualizer';
 // import Visualiser from './_Visualizer';
 
@@ -10,10 +12,9 @@ export default class WebAudioAPISound {
     window.webAudioAPISoundManager =
       window.webAudioAPISoundManager || new WebAudioAPISoundManager(this.url);
     this.manager = window.webAudioAPISoundManager;
-    this._canvas = document.getElementById('canvas');
-    this._WIDTH = 800;
-    this._HEIGHT = 800;
-    this._canvasCtx = this._canvas.getContext('2d');
+
+    this._createCanvas();
+
     this.manager._addSound(this.url);
   }
 
@@ -22,7 +23,10 @@ export default class WebAudioAPISound {
 
     let buffer = this.manager.bufferList[url];
     // console.log(buffer);
-    this.settings = { loop: true, volume: 0.5 };
+    this.settings = {
+      loop: true,
+      volume: 0.5
+    };
 
     for (var i in options) {
       if (options.hasOwnProperty(i)) {
@@ -79,10 +83,11 @@ export default class WebAudioAPISound {
     analyser.fftSize = 256;
     let dataArray = new Uint8Array(analyser.frequencyBinCount);
 
-    this._createCanvas();
+
 
     draw();
     let time = 1;
+
     function draw() {
       window.requestAnimationFrame(draw);
 
@@ -111,11 +116,11 @@ export default class WebAudioAPISound {
           let x =
             300 +
             (100 + f) *
-              Math.sin(f * 10 * 2 * Math.PI / 100 * (clock * time / 100));
+            Math.sin(f * 10 * 2 * Math.PI / 100 * (clock * time / 100));
           let y =
             300 +
             (100 + f) *
-              Math.cos(f * 10 * 2 * Math.PI / 100 * (clock * time / 100));
+            Math.cos(f * 10 * 2 * Math.PI / 100 * (clock * time / 100));
 
           canvasCtx.lineTo(x, y);
         });
@@ -132,7 +137,14 @@ export default class WebAudioAPISound {
   }
 
   _createCanvas() {
-    this._canvasCtx.fillStyle = 'rgb(0, 0, 0)';
+    this._canvas = document.getElementById('canvas');
+    this._canvas.width = 600;
+    this._canvas.height = 600;
+    this._WIDTH = this._canvas.width;
+    this._HEIGHT = this._canvas.height;
+    this._canvasCtx = this._canvas.getContext('2d');
+
+    this._canvasCtx.fillStyle = 'rgb(255, 255, 255)';
     this._canvasCtx.fillRect(0, 0, this._WIDTH, this._HEIGHT);
     // this._draw(this.analyser, this.Data);
   }
