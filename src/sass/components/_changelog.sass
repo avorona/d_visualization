@@ -1,29 +1,4 @@
 
-.dv-audio
-  display: flex
-  flex-flow: row wrap
-  justify-content: space-between
-  align-items: 
-  margin: 25px auto
-  max-width: 1000px
-  width: 100%
-  &__visual
-    flex: 0 0 600px
-  &__text
-    flex: 0 0 400px
-
-    
-
-.button-cta
-  font-size: 18px
-  color: #fff
-  margin: 15px
-  display: inline-block
-  padding: 10px 15px
-  background-color: tomato
-  border-radius: 5px
-  border: 1px solid #ddd
-
 
 .changelog
   border-radius: 10px
@@ -32,7 +7,7 @@
   // overflow-y: scroll
   position: relative
   &__header
-    background-color:  #1f731b
+    background-color:  $c-header_1
     border-top-left-radius: 6px
     border-top-right-radius: 6px
     color: #fff
@@ -53,3 +28,11 @@
     margin-bottom: 15px
   p
     margin-bottom: 15px
+
+
+
+/********SCROLLBAR********/
+
+
+.ps__thumb-x, .ps__thumb-y
+  background-color: $c-scrolbar
