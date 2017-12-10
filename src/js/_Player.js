@@ -1,5 +1,3 @@
-import PubSub from 'pubsub-js';
-// import WebAudioAPISoundManager from './_Soundizer';
 import WebAudioAPISound from './_Soundizer';
 
 import { PLAY, STOP, REGULATE } from './_constants';
@@ -26,7 +24,7 @@ export default class Player {
     let self = this;
 
     PLAY.addEventListener('click', function() {
-      self.sound.play({ loop: true, volume: 0.1 });
+      self.sound.play({ loop: true, volume: 0 });
     });
 
     STOP.addEventListener('click', function() {

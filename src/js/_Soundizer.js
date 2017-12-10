@@ -1,10 +1,6 @@
-import PubSub from 'pubsub-js';
 import WebAudioAPISoundManager from './_SoundManager';
-import {
-  getArrayWithLimitedLength
-} from './lib/helpers';
-// import Visualiser from './_Visualizer';
-// import Visualiser from './_Visualizer';
+import { getArrayWithLimitedLength } from './lib/helpers';
+import dat from './lib/dat.gui.min';
 
 export default class WebAudioAPISound {
   constructor(url) {
@@ -14,7 +10,7 @@ export default class WebAudioAPISound {
     this.manager = window.webAudioAPISoundManager;
 
     this._createCanvas();
-
+    // console.log(dat);
     this.manager._addSound(this.url);
   }
 
@@ -83,21 +79,14 @@ export default class WebAudioAPISound {
     analyser.fftSize = 256;
     let dataArray = new Uint8Array(analyser.frequencyBinCount);
 
+    this.visualiser = { speed: 100, diameter: 100 };
 
+    const gui = new dat.GUI();
+    gui.add(self.visualiser, 'speed', 10, 200);
+    gui.add(self.visualiser, 'diameter', 10, 100);
 
-    draw();
     let time = 1;
-
-    function draw() {
-      window.requestAnimationFrame(draw);
-
-      analyser.getByteTimeDomainData(dataArray);
-      // analyser.getByteFrequencyData(dataArray);
-      render(dataArray);
-    }
-
     function render(data) {
-      // console.log(data);
       time++;
       let canvasCtx = self._canvasCtx;
       let clock = -1;
@@ -115,12 +104,26 @@ export default class WebAudioAPISound {
           // console.log(f);
           let x =
             300 +
-            (100 + f) *
-            Math.sin(f * 10 * 2 * Math.PI / 100 * (clock * time / 100));
+            (self.visualiser.diameter + f) *
+              Math.sin(
+                f *
+                  10 *
+                  2 *
+                  Math.PI /
+                  self.visualiser.speed *
+                  (clock * time / 100)
+              );
           let y =
             300 +
-            (100 + f) *
-            Math.cos(f * 10 * 2 * Math.PI / 100 * (clock * time / 100));
+            (self.visualiser.diameter + f) *
+              Math.cos(
+                f *
+                  10 *
+                  2 *
+                  Math.PI /
+                  self.visualiser.speed *
+                  (clock * time / 100)
+              );
 
           canvasCtx.lineTo(x, y);
         });
@@ -131,6 +134,15 @@ export default class WebAudioAPISound {
 
       canvasCtx.strokeStyle = '#aaf411';
       // canvasCtx.stroke();
+    }
+
+    draw();
+
+    function draw() {
+      window.requestAnimationFrame(draw);
+
+      analyser.getByteTimeDomainData(dataArray);
+      render(dataArray);
     }
 
     return analyser;
