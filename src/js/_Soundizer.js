@@ -1,6 +1,5 @@
 import WebAudioAPISoundManager from './_SoundManager';
 import { getArrayWithLimitedLength } from './lib/helpers';
-import dat from './lib/dat.gui.min';
 
 export default class WebAudioAPISound {
   constructor(url) {
@@ -52,8 +51,9 @@ export default class WebAudioAPISound {
     let source = this.manager.context.createBufferSource();
     let gainNode = this.manager.context.createGain();
     let analyser = this.analyser();
+    this.analyser = analyser;
     gainNode.gain.value = this.settings.volume;
-    this.GainNode = this.manager.context.GainNode;
+    this.GainNode = gainNode;
     source.buffer = buffer;
     source.connect(analyser);
     analyser.connect(gainNode);
@@ -64,13 +64,16 @@ export default class WebAudioAPISound {
 
   changeVolume(element) {
     // console.log(element);
-    // let val = element.value;
+    let val = element.value;
     let fraction = parseInt(element.value) / parseInt(element.max);
     // Let's use an x*x curve (x-squared) since simple linear (x) does not
     // sound as good.
-    this.manager.context.GainNode = fraction * fraction;
 
-    // console.log(this.manager.context.GainNode);
+    this.GainNode.gain.value = fraction * fraction;
+
+    //rechain nodes
+    this.analyser.connect(this.GainNode);
+    this.GainNode.connect(this.manager.context.destination);
   }
 
   analyser() {
@@ -79,13 +82,13 @@ export default class WebAudioAPISound {
     analyser.fftSize = 256;
     let dataArray = new Uint8Array(analyser.frequencyBinCount);
 
-    this.visualiser = { speed: 100, diameter: 100 };
-
-    const gui = new dat.GUI();
-    gui.add(self.visualiser, 'speed', 10, 200);
-    gui.add(self.visualiser, 'diameter', 10, 100);
+    this.visualiser = {
+      speed: 100,
+      diameter: 100
+    };
 
     let time = 1;
+
     function render(data) {
       time++;
       let canvasCtx = self._canvasCtx;
@@ -156,7 +159,7 @@ export default class WebAudioAPISound {
     this._HEIGHT = this._canvas.height;
     this._canvasCtx = this._canvas.getContext('2d');
 
-    this._canvasCtx.fillStyle = 'rgb(255, 255, 255)';
+    this._canvasCtx.fillStyle = '#333333';
     this._canvasCtx.fillRect(0, 0, this._WIDTH, this._HEIGHT);
     // this._draw(this.analyser, this.Data);
   }

@@ -24,17 +24,18 @@ export default class Player {
     let self = this;
 
     PLAY.addEventListener('click', function() {
-      self.sound.play({ loop: true, volume: 0 });
+      // to prevent multiple threads
+      self.sound.stop();
+      self.sound.play({ loop: true, volume: 0.1 });
     });
 
     STOP.addEventListener('click', function() {
       self.sound.stop();
     });
 
-    // REGULATE.addEventListener('change', function() {
-
-    //   self.sound.changeVolume(REGULATE);
-    // });
+    REGULATE.addEventListener('change', function() {
+      self.sound.changeVolume(REGULATE);
+    });
 
     // VolumeSample.toggle = function() {
     //   this.playing ? this.stop() : this.play();
