@@ -1,0 +1,81 @@
+---
+title: Index page
+
+pages: [
+	{link: "bach_visualise.html", text: "Step 1", active: true  },
+	{link: "stream_visualise.html", text: "Step 2"},
+	{link: "#", text: "Step 3" },
+	{link: "#", text: "Step 4" }
+]
+
+
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+	
+
+	
+	{# partial example #}
+	{% include "partials/_header.html" %}
+	
+
+	
+
+<!-- begin dv-audio -->
+<div class='dv-audio'>
+
+<!-- begin dv-audio__visual -->
+<div class='dv-audio__visual'>
+<!-- begin canvas-wrapper -->
+<div class='canvas-wrapper'>
+<canvas id="canvas" ></canvas>
+
+ <div class='controller'>
+   <button class="button button-cta js-play-audio">Play me</button>
+  <button class="button button-cta js-stop-audio">Stop me</button>
+  
+  <input class="js-regulate-audio" type="range" step="1" min="0" max="100" value="100">
+
+  </div>
+  <!-- end controller -->
+</div>
+<!-- end canvas-wrapper -->
+
+</div>
+<!-- end dv-audio__visual -->
+
+<!-- begin dv-audio__text -->
+<div class='dv-audio__text'>
+
+<!-- begin changelog -->
+<div class='changelog '>
+
+<header class="changelog__header">
+ <h4 class="changelog__heading">// Wallbreaking news</h4> 
+</header>
+
+
+<!-- begin changelog__inner -->
+<div class='changelog__inner js-c-scrollbar'>
+
+{# {% include "posts/post2.html"%} #}
+{% include "posts/post1.html"%}
+
+
+</div>
+<!-- end changelog__inner -->
+</div>
+<!-- end changelog -->
+
+
+
+</div>
+<!-- end dv-audio__text -->
+
+</div>
+<!-- end dv-audio -->
+
+
+
+{% endblock %}

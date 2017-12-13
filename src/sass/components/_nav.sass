@@ -1,0 +1,35 @@
+
+
+.nav
+  display: flex
+  align-content: center
+  align-items: center
+  min-height: $s-header-height
+  padding-left: 50px
+  &__list  
+    width: 80%
+    // left: 0
+  &__item
+    display: inline-block
+    background-color: $c-tab
+    height: 40px
+    line-height: 38px
+    padding: 0px
+    min-width: 100px
+    text-align: center
+    font-weight: 300
+    vertical-align: middle
+    border-radius: 8px
+    box-shadow: 0px 0px 2px 2px $c-shadow
+    margin-right: 10px
+    &.is-active
+      background-color: $c-tab-active
+      font-weight: 900
+  &__link
+    color: inherit
+    display: block
+    padding: 0 15px
+    text-decoration: none
+    font-size: 15px
+    font-family: monospace
+    // line-height: 1

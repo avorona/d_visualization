@@ -1,5 +1,5 @@
 import WebAudioAPISoundManager from './_SoundManager';
-import { getArrayWithLimitedLength } from './lib/helpers';
+import { getArrayWithLimitedLength } from './../lib/helpers';
 
 export default class WebAudioAPISound {
   constructor(url) {
@@ -51,7 +51,7 @@ export default class WebAudioAPISound {
     let source = this.manager.context.createBufferSource();
     let gainNode = this.manager.context.createGain();
     let analyser = this.analyser();
-    this.analyser = analyser;
+    this.soundAnalyser = analyser;
     gainNode.gain.value = this.settings.volume;
     this.GainNode = gainNode;
     source.buffer = buffer;
@@ -64,7 +64,6 @@ export default class WebAudioAPISound {
 
   changeVolume(element) {
     // console.log(element);
-    let val = element.value;
     let fraction = parseInt(element.value) / parseInt(element.max);
     // Let's use an x*x curve (x-squared) since simple linear (x) does not
     // sound as good.
@@ -72,7 +71,7 @@ export default class WebAudioAPISound {
     this.GainNode.gain.value = fraction * fraction;
 
     //rechain nodes
-    this.analyser.connect(this.GainNode);
+    this.soundAnalyser.connect(this.GainNode);
     this.GainNode.connect(this.manager.context.destination);
   }
 

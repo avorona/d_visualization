@@ -1,6 +1,6 @@
 import WebAudioAPISound from './_Soundizer';
 
-import { PLAY, STOP, REGULATE } from './_constants';
+import { PLAY, STOP, REGULATE } from './../common/_constants';
 
 export default class Player {
   constructor(audio) {

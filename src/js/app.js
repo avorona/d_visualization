@@ -1,6 +1,2 @@
-import './changelog';
-import Player from './_Player';
-
-let player = new Player('bach');
-
-player.run();
+import './bach_visualise/index';
+import './stream_visualise/index';

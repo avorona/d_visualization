@@ -1,0 +1,26 @@
+
+<!-- begin page__header -->
+<header class='page__header'>
+
+<!-- begin navigation -->
+<nav class='nav'>
+
+<ul class="nav__list">
+
+{% for t in pages %}
+
+{% if t.active %}
+	<li class="nav__item is-active"><a href="{{t.link}}" class="nav__link">{{t.text}}</a></li>
+
+{% else %}
+	<li class="nav__item"><a href="{{t.link}}" class="nav__link">{{t.text}}</a></li>
+{% endif %}
+
+{% endfor %}
+</ul>	
+
+</nav>
+<!-- end navigation -->
+
+</header>
+<!-- end page__header -->
