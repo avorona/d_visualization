@@ -8,6 +8,7 @@
   
 .dv-audio
   display: flex
+  position: relative
   flex-flow: row wrap
   justify-content: space-between
   align-items: 
@@ -17,7 +18,21 @@
   &__visual
     flex: 0 0 600px
   &__text
-    flex: 0 0 400px
+    max-width: 400px
+    width: 100%
+    right: 10px
+    top: 0px
+    height: 30px
+    opacity: 0.55
+    filter: hue-rotate(90deg)
+    overflow: hidden
+    cursor: pointer
+    position: absolute
+    +tr(all 900ms ease-in-out)
+    overflow: hidden
+    &:hover
+      height: 100%
+      opacity: 1
 
     
 

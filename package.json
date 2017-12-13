@@ -52,6 +52,7 @@
     "gulp-svgmin": "^1.2.0",
     "gulp-svgstore": "^5.0.5",
     "gulp-util": "^3.0.7",
+    "howler": "^2.0.5",
     "htmlhint": "^0.9.13",
     "husky": "^0.13.2",
     "jquery": "^3.1.1",

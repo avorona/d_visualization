@@ -24,7 +24,7 @@ pages: [
 	
 
 <!-- begin dv-audio -->
-<div class='dv-audio'>
+<div class='dv-audio js-howler'>
 
 <!-- begin dv-audio__visual -->
 <div class='dv-audio__visual'>
@@ -33,10 +33,8 @@ pages: [
 <canvas id="canvas" ></canvas>
 
  <div class='controller'>
-   <button class="button button-cta js-play-audio">Play me</button>
-  <button class="button button-cta js-stop-audio">Stop me</button>
+
   
-  <input class="js-regulate-audio" type="range" step="1" min="0" max="100" value="100">
 
   </div>
   <!-- end controller -->
@@ -49,27 +47,8 @@ pages: [
 <!-- begin dv-audio__text -->
 <div class='dv-audio__text'>
 
-<!-- begin changelog -->
-<div class='changelog '>
 
-<header class="changelog__header">
- <h4 class="changelog__heading">// Wallbreaking news</h4> 
-</header>
-
-
-<!-- begin changelog__inner -->
-<div class='changelog__inner js-c-scrollbar'>
-
-{# {% include "posts/post2.html"%} #}
-{% include "posts/post1.html"%}
-
-
-</div>
-<!-- end changelog__inner -->
-</div>
-<!-- end changelog -->
-
-
+{% include "partials/changelog/_changelog_2.html" %}
 
 </div>
 <!-- end dv-audio__text -->
