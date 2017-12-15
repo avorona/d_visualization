@@ -7,6 +7,12 @@ gulp.task('copy:fonts', function() {
     .pipe(gulp.dest(config.dest.fonts));
 });
 
+gulp.task('copy:data', function() {
+  return gulp
+    .src(config.src.data + '/**/*.*')
+    .pipe(gulp.dest(config.dest.data));
+});
+
 gulp.task('copy:lib', function() {
   return gulp.src(config.src.lib + '/**/*.*').pipe(gulp.dest(config.dest.lib));
 });
@@ -27,6 +33,7 @@ gulp.task('copy:img', function() {
 gulp.task('copy', [
   'copy:img',
   'copy:rootfiles',
+  'copy:data',
   // 'copy:lib',
   'copy:fonts'
 ]);

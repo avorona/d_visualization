@@ -1,12 +1,26 @@
 import { HOWLER } from './../common/_constants';
 import { Howl } from 'howler';
 
+import './../server/index';
+
 class SoundHowl {
-  constructor() {}
+  constructor() {
+    this.tracks = {
+      zero: { path: '../data/audio/aso.mp3', sound: [] },
+      first: { path: '../data/audio/mystery.mp3', sound: [] }
+    };
+  }
 
   run() {
-    const sound = new Howl({ src: ['bach.mp3'] });
-    sound.play();
+    let self = this;
+    const sound = new Howl({
+      src: [self.tracks.zero.path, self.tracks.first.path],
+      preload: true
+    });
+
+    sound.on('load', function(e) {
+      console.log(sound);
+    });
   }
 }
 
