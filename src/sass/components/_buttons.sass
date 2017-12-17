@@ -1,6 +1,7 @@
 .button
   &_play
     display: inline-block
+    position: relative
     width: 180px
     height: 180px
     border-radius: 50%
@@ -13,3 +14,6 @@
     +tr(transform 0.2s ease-in)
     &:hover
       transform: translateY(-4px)
+    span
+      +vcenter
+      text-decoration: none
