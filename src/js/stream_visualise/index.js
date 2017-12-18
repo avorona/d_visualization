@@ -25,7 +25,9 @@ class SoundController {
     for (const track in mapObject) {
       mapObject[track] = Object.values(mapObject[track]).splice(0, 2);
       mapObject[track].forEach(function(el, index, array) {
-        array[index] = Math.floor(el);
+        if (array[index] !== 0) {
+          array[index] = Math.floor(el * 1000);
+        }
       });
     }
 
@@ -47,19 +49,23 @@ class SoundController {
 
     const sound = new Howl({
       src: this._trackSrc,
-      sprite: this._trackMap
+      sprite: this._trackMap,
+      volume: 0.5
     });
 
     sound.on('load', function(e) {
-      console.log(sound._sprite);
-      sound.play();
-      if (SPARKY) self.visualisation = objectsToVisualise.sparky;
-      else if (FLUFFY) self.visualisation = objectsToVisualise.fluffy;
-      else throw Error('You do not have any object to play with');
+      console.log(sound._sprite['aso']);
+      sound.play('mystery');
+      if (SPARKY) {
+        self.visualisation = objectsToVisualise.sparky;
+      } else if (FLUFFY) {
+        self.visualisation = objectsToVisualise.fluffy;
+      } else {
+        throw Error('You do not have any object to play with');
+      }
 
       let magic = self.visualisation;
       magic.run();
-      // console.log(magic);
     });
   }
 }
