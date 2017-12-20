@@ -65,6 +65,7 @@
     "require-dir": "^0.3.2",
     "require-yaml": "^0.0.1",
     "run-sequence": "^1.1.5",
+    "three": "^0.89.0",
     "through2": "^2.0.1",
     "webpack": "^2.2.1",
     "webpack-bundle-analyzer": "^1.5.3"

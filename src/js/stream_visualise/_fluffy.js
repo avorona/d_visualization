@@ -1,7 +1,14 @@
-export default class Fluffy {
-  constructor() {}
+import Visualisator from './Visualisator';
+
+class Fluffy extends Visualisator {
+  constructor() {
+    //Rendering
+    super();
+  }
 
   run() {
-    console.log('Sparky');
+    console.log('Fluffy');
   }
 }
+
+export default Fluffy;
