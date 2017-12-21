@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import './../lib/OrbitControlls';
 import { WIDTH, HEIGHT, BODY } from './../common/_constants';
 class Visualizator {
   constructor() {
