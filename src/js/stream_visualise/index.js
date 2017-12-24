@@ -9,11 +9,9 @@ else throw Error('Hey,fella,define some visualisation');
 
 AudioVisualisation.init();
 
-AudioVisualisation.setupAudioProccesing();
-
 PLAY.addEventListener('click', function(e) {
-  AudioVisualisation.playDefaultSound();
+  AudioVisualisation.audioProccesing();
 });
 STOP.addEventListener('click', function(e) {
-  AudioVisualisation.stopSound();
+  AudioVisualisation.sound.stop();
 });

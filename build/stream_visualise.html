@@ -61,6 +61,42 @@
                 <h4 class="post__heading"></h4>
                 <!-- begin post__text -->
                 <div class='post__text'>
+                  <p class="post__date">24.12.2017</p>
+                  <p>
+                    <ul class="changelog__list">
+                      <li>срочно нужен паттерн для этого проекта. Я хочу сделать анимацаю легконастраиваемой и стабильно работающей.</li>
+                      <li>вместо этого у меня ощущение, что я сматываю скотчем две детали ионного двигателя</li>
+                      <li>цель этого проекта - визуализация данных. Показать, как в зависимости от репрезнтативной формы изменяется человеческое восприятие данных </li>
+                      <li>переписал дочерний клас визуализации.</li>
+                      <li>Убрал кровью и потом выстраданную загрузку аудио, заменил на встроенный в three.js <a href="https://threejs.org/docs/index.html#api/audio/AudioAnalyser">AudioAnalyser</a></li>
+                    </ul>
+                  </p>
+                </div>
+                <!-- end post__text -->
+              </div>
+              <!-- end post -->
+              <!-- begin post -->
+              <div class='post'>
+                <h4 class="post__heading"></h4>
+                <!-- begin post__text -->
+                <div class='post__text'>
+                  <p class="post__date">23.12.2017</p>
+                  <p> Использую офф доку <a href="https://threejs.org/docs/#api/materials/MeshPhongMaterial">three.js</a>, <a href="http://raathigesh.com/Audio-Visualization-with-Web-Audio-and-ThreeJS/">статью по визуализации аудио Raathigesh</a>
+                    <ul class="changelog__list">
+                      <li>Учусь работать с асинхронным JS, используя обертку вокруг колбеков - <a href="https://developer.mozilla.org/uk/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></li>
+                      <li>Очень важно понимать как работают инструменты, которые ты используешь</li>
+                      <li>покапался в доках three.js, оказалось у них есть модуль для работы с аудио...сейчас я не буду на него переписывать, чтобы не тормозить процесс. он переходит в конец очереди</li>
+                    </ul>
+                  </p>
+                </div>
+                <!-- end post__text -->
+              </div>
+              <!-- end post -->
+              <!-- begin post -->
+              <div class='post'>
+                <h4 class="post__heading"></h4>
+                <!-- begin post__text -->
+                <div class='post__text'>
                   <p class="post__date">18.12.2017</p>
                   <p> Сегодня добился нормальной подгрузки аудиоспрайта и управления параметрами его воспроизведения. Но тут такое дело... Обнаружилось, что библиотека <a href="#">howler.js</a> не поддерживает работу с аудиокентекстом в мере, необходимой
                     для визуализации. У меня сейчас стоит выбор. Заняться контрибуцией в howler.js, чтобы можно было визуализировать звук с её помощью либо использовать Three.js, как я и планировал, а ауидиопоток грузить ручками... Так как я поставил

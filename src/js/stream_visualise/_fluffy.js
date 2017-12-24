@@ -1,6 +1,6 @@
 import Visualisator from './Visualisator';
 
-class Fluffy extends Visualisator {
+export default class Fluffy extends Visualisator {
   constructor() {
     //Rendering
     super();
@@ -10,5 +10,3 @@ class Fluffy extends Visualisator {
     console.log('Fluffy');
   }
 }
-
-export default Fluffy;
