@@ -5,7 +5,7 @@ import { PLAY, STOP } from './../common/_constants';
 class Visualizator {
   constructor() {
     this.tracks = {};
-    this.visualisation;
+    // this.objectPath = path;
 
     // Rendering process
     this.scene;
