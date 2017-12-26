@@ -1,26 +1,14 @@
 import Visualisator from './Visualisator';
 import * as THREE from 'three';
-import {
-  WIDTH,
-  HEIGHT,
-  BODY
-} from './../common/_constants';
-import {
-  debounce
-} from './../helpers/_debounce';
-import {
-  Perlin
-} from './../helpers/Perlin';
+import { WIDTH, HEIGHT, BODY } from './../common/_constants';
+import { debounce } from './../helpers/_debounce';
+import { Perlin } from './../helpers/Perlin';
 
 // load canvas detecor for catching exceptions
-import {
-  Detector
-} from './../helpers/Detector';
+import { Detector } from './../helpers/Detector';
 
 // load fps statistic for checking memory licks
-import {
-  Stats
-} from './../lib/_stats.min.js';
+import { Stats } from './../lib/_stats.min.js';
 
 export default class Sparky extends Visualisator {
   constructor() {
@@ -54,7 +42,6 @@ export default class Sparky extends Visualisator {
     window.addEventListener(
       'resize',
       debounce(function() {
-
         let width = window.innerWidth;
         let height = window.innerHeight;
         self.camera.aspect = width / height;
@@ -241,7 +228,7 @@ export default class Sparky extends Visualisator {
         value: new THREE.Color(0xff2200)
       },
       texture: {
-        value: new THREE.TextureLoader().load('../img/water.jpg')
+        value: new THREE.TextureLoader().load('img/water.jpg')
       }
     };
     this.uniforms.texture.value.wrapS = this.uniforms.texture.value.wrapT =

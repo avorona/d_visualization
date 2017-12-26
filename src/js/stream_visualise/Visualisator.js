@@ -23,8 +23,8 @@ class Visualizator {
 
     // default values
     this.defaultAudioUrl = {
-      aso: '../data/audio/aso.mp3',
-      mystery: '../data/audio/mystery.mp3'
+      aso: 'data/audio/aso.mp3',
+      mystery: 'data/audio/mystery.mp3'
     };
 
     this.numberOfBars = 44;
