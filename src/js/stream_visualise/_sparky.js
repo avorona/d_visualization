@@ -241,7 +241,7 @@ export default class Sparky extends Visualisator {
         value: new THREE.Color(0xff2200)
       },
       texture: {
-        value: new THREE.TextureLoader().load('/img/water.jpg')
+        value: new THREE.TextureLoader().load('../img/water.jpg')
       }
     };
     this.uniforms.texture.value.wrapS = this.uniforms.texture.value.wrapT =
