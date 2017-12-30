@@ -1,22 +1,111 @@
 <!-- begin changelog -->
 <div class='changelog '>
-
 <header class="changelog__header">
  <h4 class="changelog__heading">// Wallbreaking news</h4> 
 </header>
-
-
 <!-- begin changelog__inner -->
 <div class='changelog__inner js-c-scrollbar'>
-
-
-{% include "posts/post2_4.html"%}
-{% include "posts/post2_3.html"%}
-{% include "posts/post2_2.html"%}
-{% include "posts/post2_1.html"%}
-{% include "posts/post2.html"%}
-
-
+  <!-- begin post -->
+              <div class='post'>
+                <h4 class="post__heading"></h4>
+                <!-- begin post__text -->
+                <div class='post__text'>
+                  <p class="post__date">25.12.2017</p>
+                  <p> Сегодня я впервые сделал что-то с помощью шейдеров. Или вернее сказать - нечто? Потому что сейчас, это больше похоже на какую-то кракозябру-осьминожку </p> <img src="img/shots/octopus1.png" alt="" class="post__img"> <img src="img/shots/octopus2.png"
+                    alt="" class="post__img">
+                  <p> Теперь нужно немного разобраться в шейдерах, что закончить визуализацию.</p>
+                  <p>Я использовал исходники примера three.js <a href="https://threejs.org/examples/webgl_custom_attributes"></a> webgl / custom / attributes</p>
+                  <p>И так же меня вдохновила <a href="https://www.clicktorelease.com/blog/vertex-displacement-noise-3d-webgl-glsl-three-js/">вот эта статья </a> и мой шеф - <a href="https://github.com/akella">Yuri @akella Artiukh</a></p>
+                </div>
+                <!-- end post__text -->
+              </div>
+              <!-- end post -->
+              <!-- begin post -->
+              <div class='post'>
+                <h4 class="post__heading"></h4>
+                <!-- begin post__text -->
+                <div class='post__text'>
+                  <p class="post__date">25.12.2017</p>
+                  <p>
+                    <ul class="changelog__list">
+                      <li>создал сферу и чтобы понять, что могу менять её параметры в зависимости от частоты, начал менять цвет, получился дискошар частот, хехе</li>
+                      <li>появилась идея сделать глитч анимацию поверхности шара...тереь нужно понять как это можно реализовать</li>
+                    </ul>
+                  </p>
+                </div>
+                <!-- end post__text -->
+              </div>
+              <!-- end post -->
+              <!-- begin post -->
+              <div class='post'>
+                <h4 class="post__heading"></h4>
+                <!-- begin post__text -->
+                <div class='post__text'>
+                  <p class="post__date">24.12.2017</p>
+                  <p>
+                    <ul class="changelog__list">
+                      <li>срочно нужен паттерн для этого проекта. Я хочу сделать анимацаю легконастраиваемой и стабильно работающей.</li>
+                      <li>вместо этого у меня ощущение, что я сматываю скотчем две детали ионного двигателя</li>
+                      <li>цель этого проекта - визуализация данных. Показать, как в зависимости от репрезнтативной формы изменяется человеческое восприятие данных </li>
+                      <li>переписал дочерний клас визуализации.</li>
+                      <li>Убрал кровью и потом выстраданную загрузку аудио, заменил на встроенный в three.js <a href="https://threejs.org/docs/index.html#api/audio/AudioAnalyser">AudioAnalyser</a></li>
+                    </ul>
+                  </p>
+                </div>
+                <!-- end post__text -->
+              </div>
+              <!-- end post -->
+              <!-- begin post -->
+              <div class='post'>
+                <h4 class="post__heading"></h4>
+                <!-- begin post__text -->
+                <div class='post__text'>
+                  <p class="post__date">23.12.2017</p>
+                  <p> Использую офф доку <a href="https://threejs.org/docs/#api/materials/MeshPhongMaterial">three.js</a>, <a href="http://raathigesh.com/Audio-Visualization-with-Web-Audio-and-ThreeJS/">статью по визуализации аудио Raathigesh</a>
+                    <ul class="changelog__list">
+                      <li>Учусь работать с асинхронным JS, используя обертку вокруг колбеков - <a href="https://developer.mozilla.org/uk/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></li>
+                      <li>Очень важно понимать как работают инструменты, которые ты используешь</li>
+                      <li>покапался в доках three.js, оказалось у них есть модуль для работы с аудио...сейчас я не буду на него переписывать, чтобы не тормозить процесс. он переходит в конец очереди</li>
+                    </ul>
+                  </p>
+                </div>
+                <!-- end post__text -->
+              </div>
+              <!-- end post -->
+              <!-- begin post -->
+              <div class='post'>
+                <h4 class="post__heading"></h4>
+                <!-- begin post__text -->
+                <div class='post__text'>
+                  <p class="post__date">18.12.2017</p>
+                  <p> Сегодня добился нормальной подгрузки аудиоспрайта и управления параметрами его воспроизведения. Но тут такое дело... Обнаружилось, что библиотека <a href="#">howler.js</a> не поддерживает работу с аудиокентекстом в мере, необходимой
+                    для визуализации. У меня сейчас стоит выбор. Заняться контрибуцией в howler.js, чтобы можно было визуализировать звук с её помощью либо использовать Three.js, как я и планировал, а ауидиопоток грузить ручками... Так как я поставил
+                    себе срок до конца месяца добиться двух сносных визуализаций, я выбираю второй вариант, но идею контрибуции в howler.js я отложу в ящик.
+                    <ul class="changelog__list">
+                      <li class="changelog__item"> Только что нашёл статью статью <a href="http://raathigesh.com/Audio-Visualization-with-Web-Audio-and-ThreeJS/">разработчика из Шри-Ланки на мою тему</a>, стоит взять на заметку</li>
+                    </ul>
+                  </p>
+                </div>
+                <!-- end post__text -->
+              </div>
+              <!-- end post -->
+              <!-- begin post -->
+              <div class='post'>
+                <h4 class="post__heading"></h4>
+                <!-- begin post__text -->
+                <div class='post__text'>
+                  <p class="post__date">15.12.2017</p>
+                  <p>
+                    <ul class="changelog__list">
+                      <li class="changelog__item">Прокрастинируя, добавил две кноповки для будущих анимаций </li>
+                      <li class="changelog__item">Перестав прокарстинировать, разобрался с <a href="https://github.com/tonistiigi/audiosprite"> ауидоспрайтами</a> и <a href="https://ffmpeg.zeranoe.com/builds/">ffmpeg</a></li>
+                      <li class="changelog__item">Полготовил спрайт для обработки на завтра :)</li>
+                    </ul>
+                  </p>
+                </div>
+                <!-- end post__text -->
+              </div>
+              <!-- end post -->
 </div>
 <!-- end changelog__inner -->
 </div>

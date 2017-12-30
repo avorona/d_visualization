@@ -8,8 +8,8 @@ export default class Player {
   }
 
   run() {
-    let bach = new WebAudioAPISound(this.s);
-    this.sound = bach;
+    let sound = new WebAudioAPISound(this.s);
+    this.sound = sound;
     // console.log(bach);
 
     this._bindEvents();

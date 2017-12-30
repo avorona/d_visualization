@@ -1,4 +1,3 @@
-import * as THREE from 'three';
 import './../lib/OrbitControlls';
 import { PLAY, STOP } from './../common/_constants';
 
