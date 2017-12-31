@@ -1,4 +1,11 @@
-import { SPARKY, FLUFFY, PLAY, STOP, THREEJS } from './../common/_constants';
+import {
+  SPARKY,
+  FLUFFY,
+  PLAY,
+  STOP,
+  THREEJS,
+  LOAD
+} from './../common/_constants';
 import Sparky from './_sparky';
 import Fluffy from './_fluffy';
 
@@ -15,5 +22,8 @@ if (THREEJS) {
   });
   STOP.addEventListener('click', function(e) {
     AudioVisualisation.sound.stop();
+  });
+  LOAD.addEventListener('click', function(e) {
+    AudioVisualisation.loadSound();
   });
 }

@@ -1,7 +1,7 @@
 ProjectTitle: sv
 
 PageList:
-- file: bach_visualise.html
+- file: 2D_visualise.html
   ready: 50
-- file: stream_visualise.html
+- file: 3D_visualise.html
   ready: 50

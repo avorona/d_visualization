@@ -16,16 +16,24 @@ title: Stream Visualisation
 <div class='js-sparky three-js'>
 <!-- begin controllers -->
 <div class='controllers'>
-<button class="controllers__btn js-play-audio">Play</button>
-<button class="controllers__btn js-stop-audio">Stop</button>
+<button class="cta-btn controllers__btn js-play-audio">Play</button>
+<button class="cta-btn controllers__btn js-stop-audio">Stop</button>
+<button class="cta-btn  js-load-default">Load</button>
+
+
+<!-- begin droparea -->
+<div class='droparea js-drop-area'>
+  <span class="droparea__text">or drop your stuff here</span>
 </div>
+<!-- end droparea -->
+</div>
+
 <!-- end controllers -->
 
 
 
 </div>
 
-{% include "shaders/_fragment-shader.html" %}
-{% include "shaders/_vertex-shader.html" %}
+{% include "shaders/_example-shaders.html" %}
 
 {% endblock %}

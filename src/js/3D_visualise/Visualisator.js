@@ -23,7 +23,9 @@ class Visualizator {
     // default values
     this.defaultAudioUrl = {
       aso: 'data/audio/aso.mp3',
-      mystery: 'data/audio/mystery.mp3'
+      mystery: 'data/audio/mystery.mp3',
+      payback: 'data/audio/payback.mp3',
+      why: 'data/audio/why.mp3'
     };
 
     this.numberOfBars = 44;
@@ -34,6 +36,10 @@ class Visualizator {
   _makeActiveDefaultBtn() {
     PLAY.classList.add('is-interactive');
     STOP.classList.add('is-interactive');
+  }
+  _makePassiveDefaultBtn() {
+    PLAY.classList.remove('is-interactive');
+    STOP.classList.remove('is-interactive');
   }
 
   //util method to get random colors to make stuff interesting

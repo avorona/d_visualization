@@ -9,7 +9,9 @@ export const {
   HEIGHT,
   BODY,
   CANVAS2D,
-  THREEJS
+  THREEJS,
+  LOAD,
+  DROPAREA
 } = {
   PLAY: document.querySelector('.js-play-audio'),
   STOP: document.querySelector('.js-stop-audio'),
@@ -20,5 +22,7 @@ export const {
   HEIGHT: window.innerHeight,
   BODY: document.body,
   CANVAS2D: document.querySelector('.canvas-2d'),
-  THREEJS: document.querySelector('.three-js')
+  THREEJS: document.querySelector('.three-js'),
+  LOAD: document.querySelector('.js-load-default'),
+  DROPAREA: document.querySelector('.js-drop-area')
 };
