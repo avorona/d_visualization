@@ -28,7 +28,7 @@
     "require-dir": "^0.3.2",
     "require-yaml": "^0.0.1",
     "run-sequence": "^1.1.5",
-    "three": "^0.125.0"
+    "three": "^0.137.0"
   }
 
 }
